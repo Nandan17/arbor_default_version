@@ -23,7 +23,7 @@ class _AdminViewState extends State<AdminView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Scan the data'),
+        title: Center(child: const Text('Scan the data')),
         actions: [
           PopupMenuButton<MenuAction>(
             onSelected: (value) async{
@@ -54,6 +54,7 @@ class _AdminViewState extends State<AdminView> {
           },
         )
         ],
+        backgroundColor: Color.fromARGB(111, 111, 111, 111),
     ),
     body: Center(
         child: ElevatedButton(
@@ -63,6 +64,13 @@ class _AdminViewState extends State<AdminView> {
             ));
           },
           child: const Text('SCAN NOW'),
+          style: ElevatedButton.styleFrom(
+                            primary: Color.fromARGB(255, 47, 110, 146),
+                            padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                            textStyle: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold)
+          )
         ),
       ),
     );
@@ -102,7 +110,6 @@ class _QRViewExampleState extends State<QRViewExample> {
   var railway;
   var road;
   var scientificName;
-  var tree;
   var typeofland;
   var ward;
   // In order to get hot reload to work we need to pause the camera if the platform
@@ -234,12 +241,6 @@ class _QRViewExampleState extends State<QRViewExample> {
           });
       }
 
-      getTreeTree(id) {
-        trees.doc(id).get().then((DocumentSnapshot doc){
-            tree = doc.get("tree");
-          });
-      }
-
       getTreeTypeofLand(id) {
         trees.doc(id).get().then((DocumentSnapshot doc){
             typeofland = doc.get("typeofland");
@@ -267,9 +268,9 @@ class _QRViewExampleState extends State<QRViewExample> {
                 children: <Widget>[
                   if (result != null)
                     Text(
-                        'Barcode Type: ${describeEnum(result.format)}   Data: ${result.code}')
+                        'Barcode Type: ${describeEnum(result.format)}   Data: ${result.code}', style: TextStyle(fontSize: 15, color: Colors.grey) )
                   else
-                    const Text('Scan a code'),
+                    const Text('Scan a code', style: TextStyle(fontSize: 20, color: Colors.grey)),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -286,7 +287,15 @@ class _QRViewExampleState extends State<QRViewExample> {
                               builder: (context, snapshot) {
                                 return Text('Flash: ${snapshot.data}');
                               },
-                            )),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                            primary: Color.fromARGB(255, 123, 207, 207),
+                            padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                            textStyle: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold)
+                           )
+                            ),
                       ),
                       Container(
                         margin: const EdgeInsets.all(8),
@@ -300,12 +309,20 @@ class _QRViewExampleState extends State<QRViewExample> {
                               builder: (context, snapshot) {
                                 if (snapshot.data != null) {
                                   return Text(
-                                      'Camera facing ${describeEnum(snapshot.data)}');
+                                      '${describeEnum(snapshot.data)} Camera');
                                 } else {
                                   return const Text('loading');
                                 }
                               },
-                            )),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                            primary: Color.fromARGB(255, 123, 207, 207),
+                            padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                            textStyle: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold)
+                           )
+                            ),
                       )
                     ],
                   ),
@@ -338,7 +355,6 @@ class _QRViewExampleState extends State<QRViewExample> {
                                   getTreeRailway(treeID);
                                   getTreeRoad(treeID);
                                   getTreeScientificName(treeID);
-                                  getTreeTree(treeID);
                                   getTreeTypeofLand(treeID);
                                   getTreeWard(treeID);
                                 });
@@ -368,7 +384,6 @@ class _QRViewExampleState extends State<QRViewExample> {
                                           railway:railway,
                                           road:road,
                                           scientificName:scientificName,
-                                          tree:tree,
                                           typeofland:typeofland,
                                           ward:ward,
                                           ),
@@ -385,6 +400,13 @@ class _QRViewExampleState extends State<QRViewExample> {
                             }
                           },
                           child: const Text('Submit', style: TextStyle(fontSize: 20),),
+                          style: ElevatedButton.styleFrom(
+                            primary: Color.fromARGB(255, 127, 77, 160),
+                            padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                            textStyle: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold)
+                           )
                         )
                       ),
                     ],

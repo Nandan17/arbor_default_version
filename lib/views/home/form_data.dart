@@ -25,7 +25,6 @@ class FormData extends StatefulWidget {
   String railway;
   String road;
   String scientificName;
-  String tree;
   String typeofland;
   String ward;
 
@@ -49,7 +48,6 @@ class FormData extends StatefulWidget {
     this.road,
     this.scientificName,
     this.tid,
-    this.tree,
     this.typeofland,
     this.ward,
     }) : super(key: key);
@@ -61,7 +59,7 @@ class FormData extends StatefulWidget {
 class _FormDataState extends State<FormData> {
   bool flag;
   CollectionReference trees = FirebaseFirestore.instance.collection('tree_collection');
-  
+
     @override
     void initState() {
       return super.initState();
@@ -84,123 +82,522 @@ class _FormDataState extends State<FormData> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Fetched Data'),
+        title: const Center(
+          child: Text('TREE DATA'),
+          ),
         automaticallyImplyLeading: false,
+        backgroundColor: const Color.fromARGB(111, 111, 111, 111),
       ),
       body: ListView(
-        padding: const EdgeInsets.all(8),
-        children:<Widget>[
-          
-            Container(
-              height: 50,
-              color: Colors.white,
-              child: Text("Tree Age : ${widget.Age.toString()}"),
+          padding: const EdgeInsets.all(16),
+          children: [
+
+            Card(
+            color: const Color.fromRGBO(143, 148, 251, .6),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+            elevation: 10,
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Center(
+                      child: Text(
+                          'TREE ID',
+                          style: TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                    ),
+                      const SizedBox(height: 5),
+                      Center(
+                        child: Text(
+                          widget.QRcodeid.toString(),
+                          style: const TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
             ),
-             Container(
-              height: 50,
-              color: Colors.white,
-              child: Text("City : ${widget.City.toString()}")
+            
+            Card(
+            color: const Color.fromRGBO(143, 148, 251, .6),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+            elevation: 10,
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Center(
+                      child: const Text(
+                          'TREE CITY',
+                          style: TextStyle(fontSize: 15, color: Colors.white,fontWeight: FontWeight.bold),
+                        ),
+                    ),
+                      const SizedBox(height: 5),
+                      Center(
+                        child: Text(
+                          widget.City.toString().toUpperCase(),
+                          style: const TextStyle(fontSize: 15,color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
             ),
-             Container(
-              height: 50,
-              color: Colors.white,
-              child: Text("QRcodeid : ${widget.QRcodeid.toString()}")
+
+            Card(
+            color: const Color.fromRGBO(143, 148, 251, .6),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+            elevation: 10,
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Center(
+                      child: Text(
+                          'TREE ZONE',
+                          style: TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                    ),
+                      const SizedBox(height: 5),
+                      Center(
+                        child: Text(
+                          widget.Zone.toString().toUpperCase(),
+                          style: const TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
             ),
-             Container(
-              height: 50,
-              color: Colors.white,
-              child: Text("Tree Name : ${widget.TreeName.toString()}")
+
+             Card(
+            color: const Color.fromRGBO(143, 148, 251, .6),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+            elevation: 10,
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Center(
+                      child: Text(
+                          'TREE DIVISION',
+                          style: const TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                    ),
+                      const SizedBox(height: 5),
+                      Center(
+                        child: Text(
+                          widget.division.toString().toUpperCase(),
+                          style: const TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
             ),
-             Container(
-              height: 50,
-              color: Colors.white,
-              child: Text("Zone : ${widget.Zone.toString()}")
+
+            Card(
+            color: const Color.fromRGBO(143, 148, 251, .6),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+            elevation: 10,
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Center(
+                      child: Text(
+                          'WARD',
+                          style: TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                    ),
+                      const SizedBox(height: 5),
+                      Center(
+                        child: Text(
+                          widget.ward.toString().toUpperCase(),
+                          style: const TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
             ),
-             Container(
-              height: 50,
-              color: Colors.white,
-              child: Text("Common : ${widget.common.toString()}")
+
+            Card(
+            color: const Color.fromRGBO(143, 148, 251, .6),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+            elevation: 10,
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Center(
+                      child: const Text(
+                          'GPS LOCATION',
+                          style: TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                    ),
+                      const SizedBox(height: 5),
+                      Center(
+                        child: Text(
+                          widget.gps.toString().toUpperCase(),
+                          style: const TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
             ),
-             Container(
-              height: 50,
-              color: Colors.white,
-              child: Text("division : ${widget.division.toString()}")
+
+
+            Card(
+            color: const Color.fromRGBO(143, 148, 251, .6),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+            elevation: 10,
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Center(
+                      child: Text(
+                          'LATTITUDE',
+                          style: const TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                    ),
+                      const SizedBox(height: 5),
+                      Center(
+                        child: Text(
+                          widget.lat.toString().toUpperCase(),
+                          style: const TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
             ),
-             Container(
-              height: 50,
-              color: Colors.white,
-              child: Text("Girth : ${widget.girth.toString()}")
+
+            Card(
+            color: const Color.fromRGBO(143, 148, 251, .6),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+            elevation: 10,
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Center(
+                      child: Text(
+                          'LONGITUDE',
+                          style: const TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                    ),
+                      const SizedBox(height: 5),
+                      Center(
+                        child: Text(
+                          widget.long.toString().toUpperCase(),
+                          style: const TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
             ),
-             Container(
-              height: 50,
-              color: Colors.white,
-              child: Text("GPS : ${widget.gps.toString()}")
+
+            Card(
+            color: const Color.fromRGBO(143, 148, 251, .6),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+            elevation: 10,
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Center(
+                      child: Text(
+                          'COMMON UTILITY',
+                          style: const TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                    ),
+                      const SizedBox(height: 5),
+                      Center(
+                        child: Text(
+                          widget.common.toString().toUpperCase(),
+                          style: const TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
             ),
-             Container(
-              height: 50,
-              color: Colors.white,
-              child: Text("Height : ${widget.height.toString()}")
+
+            Card(
+            color: const Color.fromRGBO(143, 148, 251, .6),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+            elevation: 10,
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Center(
+                      child: Text(
+                          'ROAD',
+                          style: TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                    ),
+                      const SizedBox(height: 5),
+                      Center(
+                        child: Text(
+                          widget.road.toString().toUpperCase(),
+                          style: const TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
             ),
-             Container(
-              height: 50,
-              color: Colors.white,
-              child: Text("Tree ID : ${widget.tid.toString()}")
+
+            Card(
+            color: const Color.fromRGBO(143, 148, 251, .6),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+            elevation: 10,
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Center(
+                      child: const Text(
+                          'RAILWAY',
+                          style: TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                    ),
+                      const SizedBox(height: 5),
+                      Center(
+                        child: Text(
+                          widget.railway.toString().toUpperCase(),
+                          style: const TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
             ),
-             Container(
-              height: 50,
-              color: Colors.white,
-              child: Text("Tree Land : ${widget.land.toString()}")
+
+            Card(
+            color: const Color.fromRGBO(143, 148, 251, .6),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+            elevation: 10,
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Center(
+                      child: Text(
+                          'TREE LAND',
+                          style: TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                    ),
+                      const SizedBox(height: 5),
+                      Center(
+                        child: Text(
+                          widget.land.toString().toUpperCase(),
+                          style: const TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
             ),
-             Container(
-              height: 50,
-              color: Colors.white,
-              child: Text("Lattitude : ${widget.lat.toString()}")
+
+            Card(
+            color: const Color.fromRGBO(143, 148, 251, .6),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+            elevation: 10,
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Center(
+                      child: Text(
+                          'TYPE OF LAND',
+                          style: TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                    ),
+                      const SizedBox(height: 5),
+                      Center(
+                        child: Text(
+                          widget.typeofland.toString().toUpperCase(),
+                          style: const TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
             ),
-             Container(
-              height: 50,
-              color: Colors.white,
-              child: Text("Longitude : ${widget.long.toString()}")
+
+             Card(
+            color: const Color.fromRGBO(143, 148, 251, .6),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+            elevation: 10,
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Center(
+                      child: Text(
+                          'TREE NAME',
+                          style: TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                    ),
+                      const SizedBox(height: 5),
+                      Center(
+                        child: Text(
+                          widget.TreeName.toString().toUpperCase(),
+                          style: const TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
             ),
-             Container(
-              height: 50,
-              color: Colors.white,
-              child: Text("Railway : ${widget.railway.toString()}")
+
+            Card(
+            color: const Color.fromRGBO(143, 148, 251, .6),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+            elevation: 10,
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Center(
+                      child: Text(
+                          'SCIENTIFIC NAME',
+                          style: TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                    ),
+                      const SizedBox(height: 5),
+                      Center(
+                        child: Text(
+                          widget.scientificName.toString().toUpperCase(),
+                          style: const TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
             ),
-             Container(
-              height: 50,
-              color: Colors.white,
-              child: Text("Road : ${widget.road.toString()}")
+
+            Card(
+            color: const Color.fromRGBO(143, 148, 251, .6),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+            elevation: 10,
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Center(
+                      child: const Text(
+                          'TREE AGE',
+                          style: TextStyle(fontSize: 15,color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                    ),
+                      const SizedBox(height: 5),
+                      Center(
+                        child: Text(
+                          widget.Age.toString(),
+                          style: const TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
             ),
-             Container(
-              height: 50,
-              color: Colors.white,
-              child: Text("Scientific Name : ${widget.scientificName.toString()}")
+
+            Card(
+            color: const Color.fromRGBO(143, 148, 251, .6),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+            elevation: 10,
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Center(
+                      child: const Text(
+                          'TREE HEIGHT',
+                          style: TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                    ),
+                      const SizedBox(height: 5),
+                      Center(
+                        child: Text(
+                          widget.height.toString(),
+                          style: const TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
             ),
-             Container(
-              height: 50,
-              color: Colors.white,
-              child: Text("Tree : ${widget.tree.toString()}")
+        
+            Card(
+            color: const Color.fromRGBO(143, 148, 251, .6),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+            elevation: 10,
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Center(
+                      child: const Text(
+                          'TREE GIRTH',
+                          style: TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                    ),
+                      const SizedBox(height: 5),
+                      Center(
+                        child: Text(
+                          widget.girth.toString(),
+                          style: const TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
             ),
-             Container(
-              height: 50,
-              color: Colors.white,
-              child: Text("Type of Land : ${widget.typeofland.toString()}")
-            ),
-             Container(
-              height: 50,
-              color: Colors.white,
-              child: Text("Ward : ${widget.ward.toString()}")
-            ),
-            Container(
+
+            
+          Container(
                         margin: const EdgeInsets.all(8),
                         child: ElevatedButton(
                           onPressed: () async {
                                   Navigator.of(context).pushNamedAndRemoveUntil('/admin/', (route) => false);
                           },
-                          child: const Text('Go back', style: TextStyle(fontSize: 20))
+                          child: const Text('Go back', style: TextStyle(fontSize: 20)),
+                          style: ElevatedButton.styleFrom(
+                            primary: Color.fromARGB(255, 164, 97, 180),
+                            padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                            textStyle: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold)
+                          ),
                         )
             ),
-            Container(
+
+                  Container(
                         margin: const EdgeInsets.all(8),
                         child: ElevatedButton(
                           onPressed: () async {
@@ -228,17 +625,25 @@ class _FormDataState extends State<FormData> {
                                           railway:widget.railway,
                                           road:widget.road,
                                           scientificName:widget.scientificName,
-                                          tree:widget.tree,
                                           typeofland:widget.typeofland,
                                           ward:widget.ward,
                                           ),
                                     ));
                           },
-                          child: const Text('Update data', style: TextStyle(fontSize: 20))
-                        )
-            ),
-        ],
-        )
+                          child: const Text('Update data', style: TextStyle(fontSize: 20)),
+                          style: ElevatedButton.styleFrom(
+                            primary: Color.fromARGB(255, 123, 207, 207),
+                            padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                            textStyle: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold)
+                           )
+                        ),
+                  )
+          ],
+        ),
     );
+
   }
+
 }

@@ -215,7 +215,7 @@ class _LoginViewState extends State<LoginView> {
 	                    child: Container(
 	                      margin: EdgeInsets.only(top: 50),
 	                      child: Center(
-	                        child: Text("Login", style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.bold),),
+	                        child: Text("Arbor", style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.bold),),
 	                      ),
 	                    ),
 	                  )

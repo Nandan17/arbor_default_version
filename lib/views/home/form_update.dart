@@ -1,3 +1,4 @@
+import 'package:arbor/views/home/form_data.dart';
 import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:slider/slider.dart';
@@ -23,7 +24,6 @@ class FormUpdate extends StatefulWidget {
   final String railway;
   final String road;
   final String scientificName;
-  final String tree;
   String typeofland;
   final String ward;
    FormUpdate({ 
@@ -46,7 +46,6 @@ class FormUpdate extends StatefulWidget {
     this.road,
     this.scientificName,
     this.tid,
-    this.tree,
     this.typeofland,
     this.ward,
      }) : super(key: key);
@@ -72,7 +71,6 @@ class _FormUpdateState extends State<FormUpdate> {
   TextEditingController commonUtilityController = TextEditingController();
   TextEditingController roadController = TextEditingController();
   TextEditingController railwayController = TextEditingController();
-  TextEditingController enterTreeController = TextEditingController();
   TextEditingController treeNameController = TextEditingController();
   TextEditingController scientificTreeNameController = TextEditingController();
   TextEditingController ageController = TextEditingController();
@@ -99,7 +97,6 @@ class _FormUpdateState extends State<FormUpdate> {
     roadController.text = widget.road;
     scientificTreeNameController.text = widget.scientificName;
     tidController.text = widget.tid;
-    enterTreeController.text = widget.tree;
     wardController.text = widget.ward;
 
     
@@ -268,32 +265,6 @@ class _FormUpdateState extends State<FormUpdate> {
                   ),
                 ),
               ),
-
-                const Padding(
-                  padding: EdgeInsets.only(top: 15),
-                  child: Center(child: Text("COMMON UTILITY")
-                  )
-                ),
-
-               Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextFormField(
-                  validator: (String value){
-                    if(value.isEmpty){
-                      return "common utility cannot be empty";
-                    } 
-                    return null;
-                  },
-                  controller: commonUtilityController,
-                  decoration: InputDecoration(
-                    labelText: 'common utility',
-                    hintText: 'common utility',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
-                  ),
-                ),
-              ),
                 
               const Padding(
                   padding: EdgeInsets.only(top: 15),
@@ -347,6 +318,32 @@ class _FormUpdateState extends State<FormUpdate> {
                 ),
               ),
 
+               const Padding(
+                  padding: EdgeInsets.only(top: 15),
+                  child: Center(child: Text("COMMON UTILITY")
+                  )
+                ),
+
+               Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextFormField(
+                  validator: (String value){
+                    if(value.isEmpty){
+                      return "common utility cannot be empty";
+                    } 
+                    return null;
+                  },
+                  controller: commonUtilityController,
+                  decoration: InputDecoration(
+                    labelText: 'common utility',
+                    hintText: 'common utility',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20.0)
+                    )
+                  ),
+                ),
+              ),
+
               const Padding(
                   padding: EdgeInsets.only(top: 15),
                   child: Center(child: Text("ROAD")
@@ -375,7 +372,7 @@ class _FormUpdateState extends State<FormUpdate> {
 
               const Padding(
                   padding: EdgeInsets.only(top: 15),
-                  child: Center(child: Text("COMMON UTILITY")
+                  child: Center(child: Text("Railway")
                   )
                 ),
 
@@ -584,26 +581,6 @@ class _FormUpdateState extends State<FormUpdate> {
                 ),
 
 
-               Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextFormField(
-                  validator: (String value){
-                    if(value.isEmpty){
-                      return "tree cannot be empty";
-                    } 
-                    return null;
-                  },
-                  controller: enterTreeController,
-                  decoration: InputDecoration(
-                    labelText: 'Enter Tree',
-                    hintText: 'Enter Tree',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
-                  ),
-                ),
-              ),
-
                 Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
@@ -728,7 +705,6 @@ class _FormUpdateState extends State<FormUpdate> {
             'road':roadController.text,
             'land':widget.land,
             'typeofland':widget.typeofland,
-            'tree':enterTreeController.text,
             'TreeName':treeNameController.text,
             'scientificName':scientificTreeNameController.text,
             'Age':ageController.text,
@@ -740,7 +716,35 @@ class _FormUpdateState extends State<FormUpdate> {
           }).then((value) => print("Tree data successfully added"))
           .catchError((error) => print("Failed to add tree data"));
 
-          Navigator.of(context).pushNamedAndRemoveUntil('/admin/', (route) => false);
+          //Navigator.of(context).pushNamedAndRemoveUntil('/admin/', (route) => false);
+          Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                            builder: (context) => 
+                                FormData(
+                                  treeID: widget.treeID,
+                                  Age: ageController.text,
+                                  City:cityController.text,
+                                  QRcodeid:widget.treeID,
+                                  TreeName:treeNameController.text,
+                                  Zone:zoneController.text,
+                                  common:commonUtilityController.text,
+                                  division:divisionController.text,
+                                  girth:girthController.text,
+                                  gps:gpsController.text,
+                                  height:heightController.text,
+                                  tid:widget.treeID,
+                                  land:selectedValue_gvt_land,
+                                  lat:latController.text,
+                                  long:longController.text,
+                                  railway:railwayController.text,
+                                  road:roadController.text,
+                                  scientificName:scientificTreeNameController.text,
+                                  typeofland:selectedValue_land_type,
+                                  ward:wardController.text,
+                                  ),
+                        ));
+          //Navigator.of(context).pushNamedAndRemoveUntil('/admin/', (route) => false);
         };
         
       },
