@@ -26,7 +26,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
     }
 
     throw UnsupportedError(
@@ -35,39 +38,34 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAi-yufrHJfzq-NS_t80Z2u_mmilfRmIgM',
-    appId: '1:374331403096:web:c1e945daf0c04b5c53932d',
-    messagingSenderId: '374331403096',
-    projectId: 'flutter-arbor-project',
-    authDomain: 'flutter-arbor-project.firebaseapp.com',
-    storageBucket: 'flutter-arbor-project.appspot.com',
+    apiKey: 'AIzaSyDwPBYKtmnbCPWoVBFDuYGenXV5mJVAMEY',
+    appId: '1:367691004974:web:61ac2950855271a4a773bf',
+    messagingSenderId: '367691004974',
+    projectId: 'finalyear2020-68aaf',
+    authDomain: 'finalyear2020-68aaf.firebaseapp.com',
+    databaseURL: 'https://finalyear2020-68aaf.firebaseio.com',
+    storageBucket: 'finalyear2020-68aaf.appspot.com',
+    measurementId: 'G-D3T34L6ERF',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyC0hIsvco0SHwD6r9g1OqGhtgz6WRcDDW8',
-    appId: '1:374331403096:android:65eacbc2bb08d1a953932d',
-    messagingSenderId: '374331403096',
-    projectId: 'flutter-arbor-project',
-    storageBucket: 'flutter-arbor-project.appspot.com',
+    apiKey: 'AIzaSyBQP7rxurFmO_QbJZXG10gRnjYQkAu_-k4',
+    appId: '1:367691004974:android:abd49fdfd727c579a773bf',
+    messagingSenderId: '367691004974',
+    projectId: 'finalyear2020-68aaf',
+    databaseURL: 'https://finalyear2020-68aaf.firebaseio.com',
+    storageBucket: 'finalyear2020-68aaf.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCLqjDmbnfWGj3QkMDERNh7rzM9fOcD-EQ',
-    appId: '1:374331403096:ios:04e7dbae1bef41c553932d',
-    messagingSenderId: '374331403096',
-    projectId: 'flutter-arbor-project',
-    storageBucket: 'flutter-arbor-project.appspot.com',
-    iosClientId: '374331403096-lt8vt0ft1uaenct9npntdhrqlv87drfi.apps.googleusercontent.com',
-    iosBundleId: 'com.kurama',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCLqjDmbnfWGj3QkMDERNh7rzM9fOcD-EQ',
-    appId: '1:374331403096:ios:04e7dbae1bef41c553932d',
-    messagingSenderId: '374331403096',
-    projectId: 'flutter-arbor-project',
-    storageBucket: 'flutter-arbor-project.appspot.com',
-    iosClientId: '374331403096-lt8vt0ft1uaenct9npntdhrqlv87drfi.apps.googleusercontent.com',
-    iosBundleId: 'com.kurama',
+    apiKey: 'AIzaSyBCKdmEN_xcyDu0oHtS36ohJjt5kqai9WQ',
+    appId: '1:367691004974:ios:1c59f93e2f11599ba773bf',
+    messagingSenderId: '367691004974',
+    projectId: 'finalyear2020-68aaf',
+    databaseURL: 'https://finalyear2020-68aaf.firebaseio.com',
+    storageBucket: 'finalyear2020-68aaf.appspot.com',
+    androidClientId: '367691004974-adov98dh71j3cu6f6at19cvhnvqsc79c.apps.googleusercontent.com',
+    iosClientId: '367691004974-hceg8br2njsgp6vehdvo09ra331jej2c.apps.googleusercontent.com',
+    iosBundleId: 'com.kurama.arbor',
   );
 }

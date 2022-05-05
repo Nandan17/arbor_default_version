@@ -1,7 +1,7 @@
 import 'package:arbor/views/home/admin_view.dart';
+import 'package:arbor/views/home/form_data.dart';
 import 'package:arbor/views/home/form_screen.dart';
-import 'package:arbor/views/home/master_view.dart';
-import 'package:arbor/views/home/public_view.dart';
+import 'package:arbor/views/home/form_update.dart';
 import 'package:arbor/views/login_view.dart';
 import 'package:arbor/views/register_view.dart';
 import 'package:arbor/views/verify_email_view.dart';
@@ -23,10 +23,10 @@ void main() {
        '/login/':(context) => const LoginView(),
        '/register/':(context) => const RegisterView(),
        '/verify-email-view/':(context) => const VerifyEmailView(),
-       '/public/':(context) => const PublicView(),
        '/admin/':(context) => const AdminView(),
-       '/master/':(context) => const MasterView(),
-       '/form/':(context) => const FormScreen(),
+       '/form/':(context) =>  FormData(),
+       '/fetch/':(context) => const FormScreen(),
+       '/formupdate/':(context) => FormUpdate(),
      },
    )
   );
@@ -49,7 +49,7 @@ class HomePage extends StatelessWidget {
                   
                   if(user.emailVerified){
                      //devtools.log('email verified');
-                     return const PublicView();
+                     return const AdminView();
                    }else{
                      return const VerifyEmailView();
                    }

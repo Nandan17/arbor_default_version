@@ -400,12 +400,12 @@ class _LoginViewState extends State<LoginView> {
                             }else if(groupValue == 1){
                               Navigator.of(context)
                             .pushNamedAndRemoveUntil(
-                            '/master/',
+                            '/admin/',
                             (route) => false,);
                             }else if(groupValue == 2){
                               Navigator.of(context)
                             .pushNamedAndRemoveUntil(
-                            '/public/',
+                            '/admin/',
                             (route) => false,);
                             }else{
                               devtools.log('Please select one item');

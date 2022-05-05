@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "367691004974",
+    "firebase_url": "https://finalyear2020-68aaf.firebaseio.com",
+    "project_id": "finalyear2020-68aaf",
+    "storage_bucket": "finalyear2020-68aaf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:367691004974:android:abd49fdfd727c579a773bf",
+        "android_client_info": {
+          "package_name": "com.kurama.arbor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "367691004974-gdfaf0ogjvs0ts5lpshmld82kbk0ktpl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQP7rxurFmO_QbJZXG10gRnjYQkAu_-k4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "367691004974-gdfaf0ogjvs0ts5lpshmld82kbk0ktpl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "367691004974-qgiud43ti92lq6di2fkecko3h0dh10lg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kurama"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

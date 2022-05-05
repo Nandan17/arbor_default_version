@@ -1,12 +1,15 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:arbor/views/home/form_data.dart';
+import 'package:arbor/views/home/form_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:arbor/utilities/dialogs/logout_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'dart:developer' as devtools show log;
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AdminView extends StatefulWidget {
   const AdminView({ Key key }) : super(key: key);
@@ -20,7 +23,7 @@ class _AdminViewState extends State<AdminView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Admin view'),
+        title: const Text('Scan the data'),
         actions: [
           PopupMenuButton<MenuAction>(
             onSelected: (value) async{
@@ -59,7 +62,7 @@ class _AdminViewState extends State<AdminView> {
               builder: (context) => const QRViewExample(),
             ));
           },
-          child: const Text('qrView'),
+          child: const Text('SCAN NOW'),
         ),
       ),
     );
@@ -78,6 +81,30 @@ class _QRViewExampleState extends State<QRViewExample> {
   QRViewController controller;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
 
+
+  CollectionReference trees = FirebaseFirestore.instance.collection('tree_collection');
+  String treeID;
+  bool flag;
+  var Age;
+  var City;
+  var QRcodeid;
+  var TreeName;
+  var Zone;
+  var common;
+  var division;
+  var girth;
+  var gps;
+  var height;
+  var tid;
+  var land;
+  var lat;
+  var long;
+  var railway;
+  var road;
+  var scientificName;
+  var tree;
+  var typeofland;
+  var ward;
   // In order to get hot reload to work we need to pause the camera if the platform
   // is android, or resume the camera if the platform is iOS.
   @override
@@ -88,6 +115,142 @@ class _QRViewExampleState extends State<QRViewExample> {
     }
     controller.resumeCamera();
   }
+
+  @override
+    void initState() {
+      return super.initState();
+  }
+
+      getTreeById(id) async{
+        trees.doc(id).get().then((DocumentSnapshot doc){
+          // print(doc.data);
+          if(doc.exists){
+            flag = true;
+          } else{
+            flag = false;
+          }
+        });
+      }
+
+      getTreeAge(id) {
+        trees.doc(id).get().then((DocumentSnapshot doc){
+        Age = doc.get("Age");
+        });
+      }
+
+      getTreeCity(id) {
+        trees.doc(id).get().then((DocumentSnapshot doc){
+            City = doc.get("City");
+        });
+      }
+
+      getTreeCode(id) {
+        trees.doc(id).get().then((DocumentSnapshot doc){
+            QRcodeid = doc.get("QRcodeid");
+          });
+      }
+
+      getTreeName(id) {
+        trees.doc(id).get().then((DocumentSnapshot doc){
+            TreeName = doc.get("TreeName");
+          });
+      }
+
+      getTreeZone(id) {
+        trees.doc(id).get().then((DocumentSnapshot doc){
+            Zone = doc.get("Zone");
+          });
+      }
+
+      getTreeCommon(id) {
+        trees.doc(id).get().then((DocumentSnapshot doc){
+            common = doc.get("common");
+          });
+      }
+
+      getTreeDivision(id) {
+        trees.doc(id).get().then((DocumentSnapshot doc){
+            division = doc.get("division");
+          });
+      }
+
+      getTreeGirth(id) {
+        trees.doc(id).get().then((DocumentSnapshot doc){
+            girth = doc.get("girth");
+          });
+      }
+
+      getTreeGps(id) {
+        trees.doc(id).get().then((DocumentSnapshot doc){
+            gps = doc.get("gps");
+          });
+      }
+
+      getTreeHeight(id) {
+        trees.doc(id).get().then((DocumentSnapshot doc){
+            height = doc.get("height");
+          });
+      }
+
+      getTreeId(id) {
+        trees.doc(id).get().then((DocumentSnapshot doc){
+            tid = doc.get("id");
+          });
+      }
+
+      getTreeLand(id) {
+        trees.doc(id).get().then((DocumentSnapshot doc){
+            land = doc.get("land");
+          });
+      }
+
+      getTreeLat(id) {
+        trees.doc(id).get().then((DocumentSnapshot doc){
+            lat = doc.get("lat");
+          });
+      }
+
+      getTreeLong(id) {
+        trees.doc(id).get().then((DocumentSnapshot doc){
+            long = doc.get("long");
+          });
+      }
+
+      getTreeRailway(id) {
+        trees.doc(id).get().then((DocumentSnapshot doc){
+            railway = doc.get("railway");
+          });
+      }
+
+      getTreeRoad(id) {
+        trees.doc(id).get().then((DocumentSnapshot doc){
+            road = doc.get("road");
+          });
+      }
+
+      getTreeScientificName(id) {
+        trees.doc(id).get().then((DocumentSnapshot doc){
+            scientificName = doc.get("scientificName");
+          });
+      }
+
+      getTreeTree(id) {
+        trees.doc(id).get().then((DocumentSnapshot doc){
+            tree = doc.get("tree");
+          });
+      }
+
+      getTreeTypeofLand(id) {
+        trees.doc(id).get().then((DocumentSnapshot doc){
+            typeofland = doc.get("typeofland");
+          });
+      }
+
+      getTreeWard(id) {
+        trees.doc(id).get().then((DocumentSnapshot doc){
+            ward = doc.get("ward");
+          });
+      }
 
   @override
   Widget build(BuildContext context) {
@@ -154,37 +317,76 @@ class _QRViewExampleState extends State<QRViewExample> {
                         margin: const EdgeInsets.all(8),
                         child: ElevatedButton(
                           onPressed: () async {
-                            await controller?.pauseCamera();
-                          },
-                          child: const Text('pause',
-                              style: TextStyle(fontSize: 20)),
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.all(8),
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            await controller?.resumeCamera();
-                          },
-                          child: const Text('resume',
-                              style: TextStyle(fontSize: 20)),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        margin: const EdgeInsets.all(8),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.of(context).pushNamedAndRemoveUntil('/form/', (route) => false);
+                            var id = result.code.toString()[35];
+                            treeID = id;
+                            setState(() {
+                                  getTreeById(treeID);
+                                  getTreeAge(treeID);
+                                  getTreeCity(treeID);
+                                  getTreeCode(treeID);
+                                  getTreeName(treeID);
+                                  getTreeZone(treeID);
+                                  getTreeCommon(treeID);
+                                  getTreeDivision(treeID);
+                                  getTreeGirth(treeID);
+                                  getTreeGps(treeID);
+                                  getTreeHeight(treeID);
+                                  getTreeId(treeID);
+                                  getTreeLand(treeID);
+                                  getTreeLat(treeID);
+                                  getTreeLong(treeID);
+                                  getTreeRailway(treeID);
+                                  getTreeRoad(treeID);
+                                  getTreeScientificName(treeID);
+                                  getTreeTree(treeID);
+                                  getTreeTypeofLand(treeID);
+                                  getTreeWard(treeID);
+                                });
+                            print(flag);
+                            if(flag){
+                                 Navigator.of(context).pushNamedAndRemoveUntil('/form/', (route) => false);
+                                 Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => 
+                                        FormData(
+                                          treeID: treeID, 
+                                          Age: Age,
+                                          City:City,
+                                          QRcodeid:QRcodeid,
+                                          TreeName:TreeName,
+                                          Zone:Zone,
+                                          common:common,
+                                          division:division,
+                                          girth:girth,
+                                          gps:gps,
+                                          height:height,
+                                          tid:tid,
+                                          land:land,
+                                          lat:lat,
+                                          long:long,
+                                          railway:railway,
+                                          road:road,
+                                          scientificName:scientificName,
+                                          tree:tree,
+                                          typeofland:typeofland,
+                                          ward:ward,
+                                          ),
+                                    )); 
+                                                                        
+                              }else{
+                                   // Navigator.of(context).pushNamedAndRemoveUntil('/fetch/', (route) => false);
+                                    Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => 
+                                        FormScreen(treeID: treeID,),
+                                    ));
+                            }
                           },
                           child: const Text('Submit', style: TextStyle(fontSize: 20),),
-                        ),
-                      )
+                        )
+                      ),
                     ],
                   ),
                 ],

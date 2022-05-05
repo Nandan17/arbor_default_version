@@ -1,79 +1,112 @@
 import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
-//import 'package:slider/slider.dart';
-//import 'package:firebase_core/firebase_core.dart';
+import 'package:slider/slider.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-//import 'firebase_options.dart';
 
-class FormScreen extends StatefulWidget {
+class FormUpdate extends StatefulWidget {
   final String treeID;
-  const FormScreen({ Key key, this.treeID }) : super(key: key);
+  final String Age;
+  final String City;
+  final String QRcodeid;
+  final String TreeName;
+  final String Zone;
+  final String common;
+  final String division;
+  final String girth;
+  final String gps;
+  final String height;
+  final String tid;
+  String land;
+  final String lat;
+  final String long;
+  final String railway;
+  final String road;
+  final String scientificName;
+  final String tree;
+  String typeofland;
+  final String ward;
+   FormUpdate({ 
+    Key key, 
+    this.treeID, 
+    this.Age, 
+    this.City, 
+    this.QRcodeid, 
+    this.TreeName, 
+    this.Zone, 
+    this.common, 
+    this.division, 
+    this.girth,
+    this.gps,
+    this.height,
+    this.land,
+    this.lat,
+    this.long,
+    this.railway,
+    this.road,
+    this.scientificName,
+    this.tid,
+    this.tree,
+    this.typeofland,
+    this.ward,
+     }) : super(key: key);
 
   @override
-  State<FormScreen> createState() => _FormScreenState();
+  State<FormUpdate> createState() => _FormUpdateState();
 }
 
-class _FormScreenState extends State<FormScreen> {
+class _FormUpdateState extends State<FormUpdate> {
 
-  TextEditingController _cityController;
-  TextEditingController _zoneController;
-  TextEditingController _divisionController;
-  TextEditingController _wardController;
-  TextEditingController _gpsController;
-  TextEditingController _latController;
-  TextEditingController _longController;
-  TextEditingController _commonUtilityController;
-  TextEditingController _roadController;
-  TextEditingController _railwayController;
-  TextEditingController _enterTreeController;
-  TextEditingController _treeNameController;
-  TextEditingController _scientificTreeNameController;
-  TextEditingController _ageController;
-  TextEditingController _heightController;
-  TextEditingController _girthController;
+  CollectionReference trees = FirebaseFirestore.instance.collection('tree_collection');
+
+
+  TextEditingController answerController = TextEditingController();
+  TextEditingController qrController = TextEditingController();
+  TextEditingController cityController = TextEditingController();
+  TextEditingController zoneController = TextEditingController();
+  TextEditingController divisionController = TextEditingController();
+  TextEditingController wardController = TextEditingController();
+  TextEditingController gpsController = TextEditingController();
+  TextEditingController latController = TextEditingController();
+  TextEditingController longController = TextEditingController();
+  TextEditingController commonUtilityController = TextEditingController();
+  TextEditingController roadController = TextEditingController();
+  TextEditingController railwayController = TextEditingController();
+  TextEditingController enterTreeController = TextEditingController();
+  TextEditingController treeNameController = TextEditingController();
+  TextEditingController scientificTreeNameController = TextEditingController();
+  TextEditingController ageController = TextEditingController();
+  TextEditingController heightController = TextEditingController();
+  TextEditingController girthController = TextEditingController();
+  TextEditingController tidController = TextEditingController();
   
-
+  
   @override
-  void initState(){
-    _cityController = TextEditingController();
-    _zoneController = TextEditingController();
-    _divisionController = TextEditingController();
-    _wardController = TextEditingController();
-    _gpsController = TextEditingController();
-    _latController = TextEditingController();
-    _longController = TextEditingController();
-    _commonUtilityController = TextEditingController();
-    _roadController = TextEditingController();
-   _railwayController = TextEditingController();
-    _enterTreeController = TextEditingController();
-    _treeNameController = TextEditingController();
-    _scientificTreeNameController = TextEditingController();
-    _ageController = TextEditingController();
-    _heightController = TextEditingController();
-    _girthController = TextEditingController();
-    return super.initState();
+    void initState() {  
+    ageController.text = widget.Age;
+    cityController.text = widget.City;
+    qrController.text = widget.QRcodeid;
+    treeNameController.text = widget.TreeName;
+    zoneController.text = widget.Zone;
+    commonUtilityController.text = widget.common;
+    divisionController.text = widget.division;
+    girthController.text = widget.girth;
+    gpsController.text = widget.gps;
+    heightController.text = widget.height;
+    latController.text = widget.lat;
+    longController.text = widget.long;
+    railwayController.text = widget.railway;
+    roadController.text = widget.road;
+    scientificTreeNameController.text = widget.scientificName;
+    tidController.text = widget.tid;
+    enterTreeController.text = widget.tree;
+    wardController.text = widget.ward;
+
+    
+
+    super.initState();
   }
 
-  @override
-  void dispose() {
-    _cityController.dispose();
-    _zoneController.dispose();
-    _divisionController.dispose();
-    _wardController.dispose();
-    _gpsController.dispose();
-    _latController.dispose();
-    _longController.dispose();
-    _commonUtilityController.dispose();
-    _roadController.dispose();
-    _railwayController.dispose();
-    _enterTreeController.dispose();
-    _treeNameController.dispose();
-    _scientificTreeNameController.dispose();
-    _ageController.dispose();
-    _heightController.dispose();
-    _girthController.dispose();
-    super.dispose();
-  }
 
   String selectedValue_gvt_land;
   List<String> gvt_land = [
@@ -103,17 +136,17 @@ class _FormScreenState extends State<FormScreen> {
     'RESIDENTIAL'
   ];
 
+
   final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
 
-    CollectionReference tree_data = FirebaseFirestore.instance.collection('tree_collection');
+    
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Form'),
-        automaticallyImplyLeading: false,
+        title: const Text('Update Fetched data'),
       ),
       body:Container(
         padding: const EdgeInsets.symmetric(
@@ -138,7 +171,7 @@ class _FormScreenState extends State<FormScreen> {
                     }
                     return null;
                   },
-                  controller: _cityController,
+                  controller: cityController,
                   decoration: InputDecoration(
                     labelText: 'City',
                     hintText: 'City',
@@ -149,6 +182,7 @@ class _FormScreenState extends State<FormScreen> {
                 ),
               ),
 
+
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
@@ -158,7 +192,7 @@ class _FormScreenState extends State<FormScreen> {
                     } 
                     return null;
                   },
-                  controller: _zoneController,
+                  controller: zoneController,
                   decoration: InputDecoration(
                     labelText: 'Zone',
                     hintText: 'Zone',
@@ -178,7 +212,7 @@ class _FormScreenState extends State<FormScreen> {
                     } 
                     return null;
                   },
-                  controller: _divisionController,
+                  controller: divisionController,
                   decoration: InputDecoration(
                     labelText: 'Division',
                     hintText: 'Division',
@@ -198,7 +232,7 @@ class _FormScreenState extends State<FormScreen> {
                     } 
                     return null;
                   },
-                  controller: _wardController,
+                  controller: wardController,
                   decoration: InputDecoration(
                     labelText: 'Ward',
                     hintText: 'Ward',
@@ -224,7 +258,7 @@ class _FormScreenState extends State<FormScreen> {
                     } 
                     return null;
                   },
-                  controller: _gpsController,
+                  controller: gpsController,
                   decoration: InputDecoration(
                     labelText: 'GPS location',
                     hintText: 'GPS location',
@@ -250,7 +284,7 @@ class _FormScreenState extends State<FormScreen> {
                     } 
                     return null;
                   },
-                  controller: _commonUtilityController,
+                  controller: commonUtilityController,
                   decoration: InputDecoration(
                     labelText: 'common utility',
                     hintText: 'common utility',
@@ -276,7 +310,7 @@ class _FormScreenState extends State<FormScreen> {
                     } 
                     return null;
                   },
-                  controller: _latController,
+                  controller: latController,
                   decoration: InputDecoration(
                     labelText: 'lattitude',
                     hintText: 'lattitude',
@@ -302,7 +336,7 @@ class _FormScreenState extends State<FormScreen> {
                     } 
                     return null;
                   },
-                  controller: _longController,
+                  controller: longController,
                   decoration: InputDecoration(
                     labelText: 'longitude',
                     hintText: 'longitude',
@@ -328,7 +362,7 @@ class _FormScreenState extends State<FormScreen> {
                     } 
                     return null;
                   },
-                  controller: _roadController,
+                  controller: roadController,
                   decoration: InputDecoration(
                     labelText: 'road',
                     hintText: 'road',
@@ -354,7 +388,7 @@ class _FormScreenState extends State<FormScreen> {
                     } 
                     return null;
                   },
-                  controller: _railwayController,
+                  controller: railwayController,
                   decoration: InputDecoration(
                     labelText: 'railway',
                     hintText: 'railway',
@@ -413,10 +447,10 @@ class _FormScreenState extends State<FormScreen> {
                                 ),
                               ))
                           .toList(),
-                      value: selectedValue_gvt_land,
+                      value: widget.land,
                       onChanged: (value) {
                         setState(() {
-                          selectedValue_gvt_land = value as String;
+                          widget.land = value as String;
                         });
                       },
                       icon: const Icon(
@@ -502,10 +536,10 @@ class _FormScreenState extends State<FormScreen> {
                                 ),
                               ))
                           .toList(),
-                      value: selectedValue_land_type,
+                      value: widget.typeofland,
                       onChanged: (value) {
                         setState(() {
-                          selectedValue_land_type = value as String;
+                          widget.typeofland = value as String;
                         });
                       },
                       icon: const Icon(
@@ -559,7 +593,7 @@ class _FormScreenState extends State<FormScreen> {
                     } 
                     return null;
                   },
-                  controller: _enterTreeController,
+                  controller: enterTreeController,
                   decoration: InputDecoration(
                     labelText: 'Enter Tree',
                     hintText: 'Enter Tree',
@@ -579,7 +613,7 @@ class _FormScreenState extends State<FormScreen> {
                     } 
                     return null;
                   },
-                  controller:_treeNameController,
+                  controller:treeNameController,
                   decoration: InputDecoration(
                     labelText: 'NAME OF THE TREE',
                     hintText: 'NAME OF THE TREE',
@@ -599,7 +633,7 @@ class _FormScreenState extends State<FormScreen> {
                     } 
                     return null;
                   },
-                  controller: _scientificTreeNameController,
+                  controller: scientificTreeNameController,
                   decoration: InputDecoration(
                     labelText: 'SCIENTIFIC NAME',
                     hintText: 'SCIENTIFIC NAME',
@@ -619,7 +653,7 @@ class _FormScreenState extends State<FormScreen> {
                     } 
                     return null;
                   },
-                  controller: _ageController,
+                  controller: ageController,
                   decoration: InputDecoration(
                     labelText: 'AGE',
                     hintText: 'AGE',
@@ -640,7 +674,7 @@ class _FormScreenState extends State<FormScreen> {
                     } 
                     return null;
                   },
-                  controller: _heightController,
+                  controller: heightController,
                   decoration: InputDecoration(
                     labelText: 'HEIGHT IN MTRS',
                     hintText: 'HEIGHT IN MTRS',
@@ -661,7 +695,7 @@ class _FormScreenState extends State<FormScreen> {
                     } 
                     return null;
                   },
-                  controller: _girthController,
+                  controller: girthController,
                   decoration: InputDecoration(
                     labelText: 'GIRTH IN MTRS',
                     hintText: 'GIRTH IN MTRS',
@@ -673,16 +707,6 @@ class _FormScreenState extends State<FormScreen> {
               ),
 
 
-               Container(
-                        margin: const EdgeInsets.all(8),
-                        child: ElevatedButton(
-                          onPressed: () async {
-                                  Navigator.of(context).pushNamedAndRemoveUntil('/admin/', (route) => false);
-                          },
-                          child: const Text('Go back', style: TextStyle(fontSize: 20))
-                        )
-            ),
-
             ],
           ),
         ),
@@ -690,29 +714,26 @@ class _FormScreenState extends State<FormScreen> {
       floatingActionButton: FloatingActionButton(onPressed: ()
         {
         if(_formKey.currentState.validate()){
-          
 
-          
-
-          tree_data.doc(widget.treeID).set({
-            'City':_cityController.text,
-            'Zone':_zoneController.text,
-            'division':_divisionController.text,
-            'ward':_wardController.text,
-            'gps':_gpsController.text,
-            'common':_commonUtilityController.text,
-            'lat':_latController.text,
-            'long':_longController.text,
-            'railway':_railwayController.text,
-            'road':_roadController.text,
-            'land':selectedValue_gvt_land,
-            'typeofland':selectedValue_land_type,
-            'tree':_enterTreeController.text,
-            'TreeName':_treeNameController.text,
-            'scientificName':_scientificTreeNameController.text,
-            'Age':_ageController.text,
-            'height':_heightController.text,
-            'girth':_girthController.text,
+          trees.doc(widget.treeID).update({
+            'City':cityController.text,
+            'Zone':zoneController.text,
+            'division':divisionController.text,
+            'ward':wardController.text,
+            'gps':gpsController.text,
+            'common':commonUtilityController.text,
+            'lat':latController.text,
+            'long':longController.text,
+            'railway':railwayController.text,
+            'road':roadController.text,
+            'land':widget.land,
+            'typeofland':widget.typeofland,
+            'tree':enterTreeController.text,
+            'TreeName':treeNameController.text,
+            'scientificName':scientificTreeNameController.text,
+            'Age':ageController.text,
+            'height':heightController.text,
+            'girth':girthController.text,
             'QRcodeid':widget.treeID,
             'id':widget.treeID,
             
@@ -725,8 +746,6 @@ class _FormScreenState extends State<FormScreen> {
       },
         child: const Icon(Icons.done),
       ),
-      
     );
   }
 }
-
