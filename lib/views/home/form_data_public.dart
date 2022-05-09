@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/widgets.dart';
 
 
-class FormData extends StatefulWidget {
+class FormDataPublic extends StatefulWidget {
   //CollectionReference tree_data = FirebaseFirestore.instance.collection('tree_data');
   final String treeID;
   String Age;
@@ -28,7 +28,7 @@ class FormData extends StatefulWidget {
   String typeofland;
   String ward;
 
-  FormData({ 
+  FormDataPublic({ 
     Key key, 
     this.treeID, 
     this.Age,
@@ -53,10 +53,10 @@ class FormData extends StatefulWidget {
     }) : super(key: key);
   
   @override
-  State<FormData> createState() => _FormDataState();
+  State<FormDataPublic> createState() => _FormDataPublicState();
 }
 
-class _FormDataState extends State<FormData> {
+class _FormDataPublicState extends State<FormDataPublic> {
   bool flag;
   CollectionReference trees = FirebaseFirestore.instance.collection('tree_collection');
 
@@ -584,7 +584,7 @@ class _FormDataState extends State<FormData> {
                         margin: const EdgeInsets.all(8),
                         child: ElevatedButton(
                           onPressed: () async {
-                                  Navigator.of(context).pushNamedAndRemoveUntil('/admin/', (route) => false);
+                                  Navigator.of(context).pushNamedAndRemoveUntil('/public/', (route) => false);
                           },
                           child: const Text('Go back', style: TextStyle(fontSize: 20)),
                           style: ElevatedButton.styleFrom(
@@ -596,50 +596,6 @@ class _FormDataState extends State<FormData> {
                           ),
                         )
             ),
-
-                  Container(
-                        margin: const EdgeInsets.all(8),
-                        child: ElevatedButton(
-                          onPressed: () async {
-                                  //Navigator.of(context).pushNamedAndRemoveUntil('/formupdate/', (route) => false);
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => 
-                                        FormUpdate(
-                                          treeID: widget.treeID,
-                                          Age:widget.Age,
-                                          City:widget.City,
-                                          QRcodeid:widget.QRcodeid,
-                                          TreeName:widget.TreeName,
-                                          Zone:widget.Zone,
-                                          common:widget.common,
-                                          division:widget.division,
-                                          girth:widget.girth,
-                                          gps:widget.gps,
-                                          height:widget.height,
-                                          tid:widget.tid,
-                                          land:widget.land,
-                                          lat:widget.lat,
-                                          long:widget.long,
-                                          railway:widget.railway,
-                                          road:widget.road,
-                                          scientificName:widget.scientificName,
-                                          typeofland:widget.typeofland,
-                                          ward:widget.ward,
-                                          ),
-                                    ));
-                          },
-                          child: const Text('Update data', style: TextStyle(fontSize: 20)),
-                          style: ElevatedButton.styleFrom(
-                            primary: Color.fromARGB(255, 123, 207, 207),
-                            padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-                            textStyle: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold)
-                           )
-                        ),
-                  )
           ],
         ),
     );

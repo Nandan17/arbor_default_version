@@ -1,6 +1,10 @@
 import 'package:arbor/utilities/dialogs/error_dialog.dart';
+import 'package:arbor/views/model.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:arbor/views/dropdown/expandedListAnimationWidget.dart';
+import 'package:arbor/views/dropdown/scrollbar.dart';
 //import 'dart:developer' as devtools show log;
 
 class RegisterView extends StatefulWidget {
@@ -11,9 +15,21 @@ class RegisterView extends StatefulWidget {
 }
 
 class _RegisterViewState extends State<RegisterView> {
-
+  bool isPasswordVisible = false;
   TextEditingController _email;
   TextEditingController _password;
+
+  var options = [
+    'Admin',
+    'Master',
+    'Public',
+  ];
+
+  var _currentItemSelected = "Admin";
+  var role = "Admin";
+  int groupValue = 0;
+  String title = 'Login as';
+  bool isStrechedDropDown = false;
 
   @override
   void initState(){
@@ -127,7 +143,12 @@ class _RegisterViewState extends State<RegisterView> {
 	                            decoration: InputDecoration(
 	                              border: InputBorder.none,
 	                              hintText: "Email",
-	                              hintStyle: TextStyle(color: Colors.grey[400])
+	                              hintStyle: TextStyle(color: Colors.grey[400]),
+                                 icon: const Icon(
+                                  Icons.email,
+                                  color: Colors.purple,
+                                  size: 20,
+                                )
 	                            ),
 	                          ),
 	                        ),
@@ -135,19 +156,139 @@ class _RegisterViewState extends State<RegisterView> {
 	                          padding: const EdgeInsets.all(8.0),
 	                          child: TextField(
                               controller: _password,
-                              obscureText: true,
+                              obscureText: isPasswordVisible,
                               enableSuggestions: false,
                               autocorrect: false,
 	                            decoration: InputDecoration(
+                                suffixIcon: IconButton(
+                                  color: Colors.purple,
+                                  icon: isPasswordVisible 
+                                  ? const Icon(Icons.visibility_off) 
+                                  : const Icon(Icons.visibility),
+                                  onPressed: () =>
+                                    setState(() => isPasswordVisible = !isPasswordVisible),
+                                ),
 	                              border: InputBorder.none,
 	                              hintText: "Password",
-	                              hintStyle: TextStyle(color: Colors.grey[400])
+	                              hintStyle: TextStyle(color: Colors.grey[400]),
+                                icon: const Icon(
+                                  Icons.password,
+                                  color: Colors.purple,
+                                  size: 20,
+                                )
 	                            ),
 	                          ),
 	                        )
 	                      ],
 	                    ),
 	                  ),
+
+                    //DropDown
+                    SafeArea(
+                      child: Column(
+                        children: [
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                  child: Container(
+                                decoration: BoxDecoration(
+                                    border: Border.all(color: const Color.fromARGB(220, 220, 220, 220)),
+                                    borderRadius: const BorderRadius.all(Radius.circular(27))
+                                    ),
+                                child: Column(
+                                  children: [
+
+                                    Container(
+                                        // height: 45,
+                                        width: double.infinity,
+                                        padding: const EdgeInsets.only(right: 10),
+                                        decoration: BoxDecoration(
+                                            border: Border.all(color: const Color.fromARGB(220, 220, 220, 220),),
+                                            borderRadius:const BorderRadius.all(Radius.circular(25)),
+                                            ),
+                                        constraints: const BoxConstraints(
+                                          minHeight: 45,
+                                          minWidth: double.infinity,
+                                        ),
+                                        alignment: Alignment.center,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Expanded(
+                                              child: Padding(
+                                                padding: const EdgeInsets.symmetric(
+                                                    horizontal: 20, vertical: 10,),
+                                                child: Text(
+                                                    title,
+                                                ),
+                                              ),
+                                            ),
+                                           
+                                            GestureDetector(
+                                                onTap: () {
+                                                  setState(() {
+                                                    isStrechedDropDown =
+                                                        !isStrechedDropDown;
+                                                  });
+                                                },
+                                                child: Icon(isStrechedDropDown
+                                                    ? Icons.arrow_upward
+                                                    : Icons.arrow_downward))
+                                          ],
+                                        )
+                                      ),
+
+                                    ExpandedSection(
+                                      expand: isStrechedDropDown,
+                                      height: 100,
+                                      child: MyScrollbar(
+                                        builder: (context, scrollController2) =>
+                                            ListView.builder(
+                                                padding: const EdgeInsets.all(0),
+                                                controller: scrollController2,
+                                                shrinkWrap: true,
+                                                itemCount: options.length,
+                                                itemBuilder: (context, index) {
+                                                  return RadioListTile(
+                                                    title: Text(options.elementAt(index)),
+                                                      value: index,
+                                                      groupValue: groupValue,
+                                                      onChanged: (val) {
+                                                      setState(() {
+                                                        if(val== 0){
+                                                          groupValue = val as int;
+                                                          _currentItemSelected = options[0];
+                                                          role = options[0];
+                                                          title = options[0];
+                                                        } else if(val == 1){
+                                                          groupValue = val as int;
+                                                          _currentItemSelected = options[1];
+                                                          role = options[1];
+                                                          title = options[1];
+                                                        } else if(val ==2) {
+                                                          groupValue = val as int;
+                                                          _currentItemSelected = options[2];
+                                                          role = options[2];
+                                                          title = options[2];
+                                                        }
+
+                                                       
+                                                      });
+                                                      });
+                                                }),
+                                          ),
+                                        )
+                                  ],
+                                ),
+                              )),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+
                     const SizedBox(height: 30,),
                     Container(
                       height: 50,
@@ -169,7 +310,7 @@ class _RegisterViewState extends State<RegisterView> {
                               await FirebaseAuth.instance.createUserWithEmailAndPassword(
                               email: email, 
                               password: password,
-                              );
+                              ).then((value) => {postDetailsToFirestore(email, role)});
                               FirebaseAuth.instance.currentUser?.sendEmailVerification();
                               Navigator.of(context).pushNamedAndRemoveUntil(
                                 '/verify-email-view/', 
@@ -231,6 +372,18 @@ class _RegisterViewState extends State<RegisterView> {
       )
     );
    
+  }
+  postDetailsToFirestore(String email, String role) async {
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    User user = FirebaseAuth.instance.currentUser;
+    UserModel userModel = UserModel();
+    userModel.email = email;
+    userModel.uid = user.uid;
+    userModel.role = role;
+    await firebaseFirestore
+        .collection("users")
+        .doc(user.uid)
+        .set(userModel.toMap());
   }
 }
 

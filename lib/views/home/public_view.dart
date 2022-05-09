@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:arbor/views/home/form_data.dart';
+import 'package:arbor/views/home/form_data_public.dart';
 import 'package:arbor/views/home/form_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:arbor/utilities/dialogs/logout_dialog.dart';
@@ -11,14 +12,14 @@ import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'dart:developer' as devtools show log;
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class AdminView extends StatefulWidget {
-  const AdminView({ Key key }) : super(key: key);
+class PublicView extends StatefulWidget {
+  const PublicView({ Key key }) : super(key: key);
 
   @override
-  State<AdminView> createState() => _AdminViewState();
+  State<PublicView> createState() => _PublicViewState();
 }
 
-class _AdminViewState extends State<AdminView> {
+class _PublicViewState extends State<PublicView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +61,7 @@ class _AdminViewState extends State<AdminView> {
         child: ElevatedButton(
           onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => const QRViewExample(),
+              builder: (context) => const QRViewExamplePublic(),
             ));
           },
           child: const Text('SCAN NOW'),
@@ -77,14 +78,14 @@ class _AdminViewState extends State<AdminView> {
   }
 }
 
-class QRViewExample extends StatefulWidget {
-  const QRViewExample({Key key}) : super(key: key);
+class QRViewExamplePublic extends StatefulWidget {
+  const QRViewExamplePublic({Key key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _QRViewExampleState();
+  State<StatefulWidget> createState() => _QRViewExamplePublicState();
 }
 
-class _QRViewExampleState extends State<QRViewExample> {
+class _QRViewExamplePublicState extends State<QRViewExamplePublic> {
   Barcode result;
   QRViewController controller;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
@@ -365,7 +366,7 @@ class _QRViewExampleState extends State<QRViewExample> {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => 
-                                        FormData(
+                                        FormDataPublic(
                                           treeID: treeID, 
                                           Age: Age,
                                           City:City,
@@ -390,13 +391,8 @@ class _QRViewExampleState extends State<QRViewExample> {
                                     )); 
                                                                         
                               }else{
-                                   // Navigator.of(context).pushNamedAndRemoveUntil('/fetch/', (route) => false);
-                                    Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => 
-                                        FormScreen(treeID: treeID,),
-                                    ));
+                                   Navigator.of(context).pushNamedAndRemoveUntil('/public-view/', (route) => false);
+                                    
                             }
                           },
                           child: const Text('Submit', style: TextStyle(fontSize: 20),),

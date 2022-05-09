@@ -2,6 +2,8 @@ import 'package:arbor/views/home/admin_view.dart';
 import 'package:arbor/views/home/form_data.dart';
 import 'package:arbor/views/home/form_screen.dart';
 import 'package:arbor/views/home/form_update.dart';
+import 'package:arbor/views/home/public_view.dart';
+import 'package:arbor/views/home/public_view_data.dart';
 import 'package:arbor/views/login_view.dart';
 import 'package:arbor/views/register_view.dart';
 import 'package:arbor/views/verify_email_view.dart';
@@ -24,6 +26,8 @@ void main() {
        '/register/':(context) => const RegisterView(),
        '/verify-email-view/':(context) => const VerifyEmailView(),
        '/admin/':(context) => const AdminView(),
+       '/public/':(context) => const PublicView(),
+       '/public-view/':(context) => const PubliViewData(),
        '/form/':(context) =>  FormData(),
        '/fetch/':(context) => const FormScreen(),
        '/formupdate/':(context) => FormUpdate(),
@@ -45,17 +49,17 @@ class HomePage extends StatelessWidget {
            switch (snapshot.connectionState){
              case ConnectionState.done:
                 final user = FirebaseAuth.instance.currentUser;
-                if(user != null){
+                // if(user != null){
                   
-                  if(user.emailVerified){
-                     //devtools.log('email verified');
-                     return const AdminView();
-                   }else{
-                     return const VerifyEmailView();
-                   }
-                }else{
+                //   if(user.emailVerified){
+                //      //devtools.log('email verified');
+                //      return const AdminView();
+                //    }else{
+                //      return const VerifyEmailView();
+                //    }
+                // }else{
                     return const LoginView();
-                }
+                //}
                break;
                default:
                   return const CircularProgressIndicator();

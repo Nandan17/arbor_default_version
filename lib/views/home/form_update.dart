@@ -143,7 +143,9 @@ class _FormUpdateState extends State<FormUpdate> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Update Fetched data'),
+        title: Center(child: const Text('Update Tree data')),
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.orange,
       ),
       body:Container(
         padding: const EdgeInsets.symmetric(
@@ -155,11 +157,13 @@ class _FormUpdateState extends State<FormUpdate> {
           child: ListView(
             children: <Widget>[
 
-              const Center(child: Text("LOCATION")),
-
+              
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: Color.fromARGB(206, 209, 140, 36)
+                  ),
                   validator: (String value){
                     if(value.isEmpty){
                       return "City cannot be empty";
@@ -172,9 +176,16 @@ class _FormUpdateState extends State<FormUpdate> {
                   decoration: InputDecoration(
                     labelText: 'City',
                     hintText: 'City',
+                   hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(color: Colors.orange),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.orange)
+                      ),
+                      contentPadding: EdgeInsets.all(20)
                   ),
                 ),
               ),
@@ -183,6 +194,9 @@ class _FormUpdateState extends State<FormUpdate> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: Color.fromARGB(206, 209, 140, 36)
+                  ),
                   validator: (String value){
                     if(value.isEmpty){
                       return "Zone cannot be empty";
@@ -193,9 +207,16 @@ class _FormUpdateState extends State<FormUpdate> {
                   decoration: InputDecoration(
                     labelText: 'Zone',
                     hintText: 'Zone',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(color: Colors.orange),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.orange)
+                      ),
+                      contentPadding: EdgeInsets.all(20)
                   ),
                 ),
               ),
@@ -203,6 +224,9 @@ class _FormUpdateState extends State<FormUpdate> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: Color.fromARGB(206, 209, 140, 36)
+                  ),
                   validator: (String value){
                     if(value.isEmpty){
                       return "Division cannot be empty";
@@ -213,9 +237,16 @@ class _FormUpdateState extends State<FormUpdate> {
                   decoration: InputDecoration(
                     labelText: 'Division',
                     hintText: 'Division',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(color: Colors.orange),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.orange)
+                      ),
+                      contentPadding: EdgeInsets.all(20)
                   ),
                 ),
               ),
@@ -223,6 +254,9 @@ class _FormUpdateState extends State<FormUpdate> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: Color.fromARGB(206, 209, 140, 36)
+                  ),
                   validator: (String value){
                     if(value.isEmpty){
                       return "Ward cannot be empty";
@@ -233,22 +267,27 @@ class _FormUpdateState extends State<FormUpdate> {
                   decoration: InputDecoration(
                     labelText: 'Ward',
                     hintText: 'Ward',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(color: Colors.orange),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.orange)
+                      ),
+                      contentPadding: EdgeInsets.all(20)
                   ),
                 ),
               ),
 
-              const Padding(
-                  padding: EdgeInsets.only(top: 15),
-                  child: Center(child: Text("GPS LOCATION")
-                  )
-                ),
 
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: Color.fromARGB(206, 209, 140, 36)
+                  ),
                   validator: (String value){
                     if(value.isEmpty){
                       return "GPS location cannot be empty";
@@ -259,22 +298,27 @@ class _FormUpdateState extends State<FormUpdate> {
                   decoration: InputDecoration(
                     labelText: 'GPS location',
                     hintText: 'GPS location',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(color: Colors.orange),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.orange)
+                      ),
+                      contentPadding: EdgeInsets.all(20)
                   ),
                 ),
               ),
                 
-              const Padding(
-                  padding: EdgeInsets.only(top: 15),
-                  child: Center(child: Text("Lattitude")
-                  )
-                ),
 
                Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: Color.fromARGB(206, 209, 140, 36)
+                  ),
                   validator: (String value){
                     if(value.isEmpty){
                       return "lattitude cannot be empty";
@@ -285,22 +329,27 @@ class _FormUpdateState extends State<FormUpdate> {
                   decoration: InputDecoration(
                     labelText: 'lattitude',
                     hintText: 'lattitude',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(color: Colors.orange),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.orange)
+                      ),
+                      contentPadding: EdgeInsets.all(20)
                   ),
                 ),
               ),
 
-              const Padding(
-                  padding: EdgeInsets.only(top: 15),
-                  child: Center(child: Text("Longitude")
-                  )
-                ),
 
                Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: Color.fromARGB(206, 209, 140, 36)
+                  ),
                   validator: (String value){
                     if(value.isEmpty){
                       return "lonitude cannot be empty";
@@ -311,22 +360,27 @@ class _FormUpdateState extends State<FormUpdate> {
                   decoration: InputDecoration(
                     labelText: 'longitude',
                     hintText: 'longitude',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(color: Colors.orange),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.orange)
+                      ),
+                      contentPadding: EdgeInsets.all(20)
                   ),
                 ),
               ),
 
-               const Padding(
-                  padding: EdgeInsets.only(top: 15),
-                  child: Center(child: Text("COMMON UTILITY")
-                  )
-                ),
 
                Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: Color.fromARGB(206, 209, 140, 36)
+                  ),
                   validator: (String value){
                     if(value.isEmpty){
                       return "common utility cannot be empty";
@@ -337,22 +391,27 @@ class _FormUpdateState extends State<FormUpdate> {
                   decoration: InputDecoration(
                     labelText: 'common utility',
                     hintText: 'common utility',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(color: Colors.orange),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.orange)
+                      ),
+                      contentPadding: EdgeInsets.all(20)
                   ),
                 ),
               ),
 
-              const Padding(
-                  padding: EdgeInsets.only(top: 15),
-                  child: Center(child: Text("ROAD")
-                  )
-                ),
 
                Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: Color.fromARGB(206, 209, 140, 36)
+                  ),
                   validator: (String value){
                     if(value.isEmpty){
                       return "road cannot be empty";
@@ -363,22 +422,27 @@ class _FormUpdateState extends State<FormUpdate> {
                   decoration: InputDecoration(
                     labelText: 'road',
                     hintText: 'road',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(color: Colors.orange),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.orange)
+                      ),
+                      contentPadding: EdgeInsets.all(20)
                   ),
                 ),
               ),
 
-              const Padding(
-                  padding: EdgeInsets.only(top: 15),
-                  child: Center(child: Text("Railway")
-                  )
-                ),
-
+     
                Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: Color.fromARGB(206, 209, 140, 36)
+                  ),
                   validator: (String value){
                     if(value.isEmpty){
                       return "Railway";
@@ -389,18 +453,20 @@ class _FormUpdateState extends State<FormUpdate> {
                   decoration: InputDecoration(
                     labelText: 'railway',
                     hintText: 'railway',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(color: Colors.orange),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.orange)
+                      ),
+                      contentPadding: EdgeInsets.all(20)
                   ),
                 ),
               ),
 
-                const Padding(
-                  padding: EdgeInsets.only(top: 15),
-                  child: Center(child: Text("GOVERNMENT LAND")
-                  )
-                ),
 
                 Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -423,7 +489,7 @@ class _FormUpdateState extends State<FormUpdate> {
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.grey,
+                                color: Colors.orange,
                               ),
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -438,7 +504,7 @@ class _FormUpdateState extends State<FormUpdate> {
                                   style: const TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.grey,
+                                    color: Color.fromARGB(206, 209, 140, 36),
                                   ),
                                   overflow: TextOverflow.ellipsis,
                                 ),
@@ -448,6 +514,7 @@ class _FormUpdateState extends State<FormUpdate> {
                       onChanged: (value) {
                         setState(() {
                           widget.land = value as String;
+                          selectedValue_gvt_land = value as String;
                         });
                       },
                       icon: const Icon(
@@ -460,7 +527,7 @@ class _FormUpdateState extends State<FormUpdate> {
                       buttonWidth: 320,
                       buttonPadding: const EdgeInsets.only(left: 14, right: 14),
                       buttonDecoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(50),
                         border: Border.all(
                           color: Colors.black26,
                         ),
@@ -483,12 +550,6 @@ class _FormUpdateState extends State<FormUpdate> {
                       offset: const Offset(60, 0),
                     ),
                   ),
-                ),
-
-                const Padding(
-                  padding: EdgeInsets.only(top: 15),
-                  child: Center(child: Text("TYPE OF LAND")
-                  )
                 ),
 
                 Padding(
@@ -512,7 +573,7 @@ class _FormUpdateState extends State<FormUpdate> {
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.grey,
+                                color: Colors.orange,
                               ),
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -527,7 +588,7 @@ class _FormUpdateState extends State<FormUpdate> {
                                   style: const TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.grey,
+                                    color: Color.fromARGB(206, 209, 140, 36),
                                   ),
                                   overflow: TextOverflow.ellipsis,
                                 ),
@@ -537,6 +598,7 @@ class _FormUpdateState extends State<FormUpdate> {
                       onChanged: (value) {
                         setState(() {
                           widget.typeofland = value as String;
+                          selectedValue_land_type = value as String;
                         });
                       },
                       icon: const Icon(
@@ -549,7 +611,7 @@ class _FormUpdateState extends State<FormUpdate> {
                       buttonWidth: 320,
                       buttonPadding: const EdgeInsets.only(left: 14, right: 14),
                       buttonDecoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(50),
                         border: Border.all(
                           color: Colors.black26,
                         ),
@@ -574,16 +636,13 @@ class _FormUpdateState extends State<FormUpdate> {
                   ),
                 ),
 
-                const Padding(
-                  padding: EdgeInsets.only(top: 15),
-                  child: Center(child: Text("TREES")
-                  )
-                ),
-
 
                 Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: Color.fromARGB(206, 209, 140, 36)
+                  ),
                   validator: (String value){
                     if(value.isEmpty){
                       return "cannot be empty";
@@ -592,11 +651,18 @@ class _FormUpdateState extends State<FormUpdate> {
                   },
                   controller:treeNameController,
                   decoration: InputDecoration(
-                    labelText: 'NAME OF THE TREE',
-                    hintText: 'NAME OF THE TREE',
+                    labelText: 'NAME',
+                    hintText: 'NAME',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(color: Colors.orange),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.orange)
+                      ),
+                      contentPadding: EdgeInsets.all(20)
                   ),
                 ),
               ),
@@ -604,6 +670,9 @@ class _FormUpdateState extends State<FormUpdate> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: Color.fromARGB(206, 209, 140, 36)
+                  ),
                   validator: (String value){
                     if(value.isEmpty){
                       return "cannot be empty";
@@ -614,9 +683,16 @@ class _FormUpdateState extends State<FormUpdate> {
                   decoration: InputDecoration(
                     labelText: 'SCIENTIFIC NAME',
                     hintText: 'SCIENTIFIC NAME',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(color: Colors.orange),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.orange)
+                      ),
+                      contentPadding: EdgeInsets.all(20)
                   ),
                 ),
               ),
@@ -624,6 +700,9 @@ class _FormUpdateState extends State<FormUpdate> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: Color.fromARGB(206, 209, 140, 36)
+                  ),
                   validator: (String value){
                     if(value.isEmpty){
                       return "cannot be empty";
@@ -634,9 +713,16 @@ class _FormUpdateState extends State<FormUpdate> {
                   decoration: InputDecoration(
                     labelText: 'AGE',
                     hintText: 'AGE',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(color: Colors.orange),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.orange)
+                      ),
+                      contentPadding: EdgeInsets.all(20)
                   ),
                 ),
               ),
@@ -645,6 +731,9 @@ class _FormUpdateState extends State<FormUpdate> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: Color.fromARGB(206, 209, 140, 36)
+                  ),
                   validator: (String value){
                     if(value.isEmpty){
                       return "cannot be empty";
@@ -653,11 +742,18 @@ class _FormUpdateState extends State<FormUpdate> {
                   },
                   controller: heightController,
                   decoration: InputDecoration(
-                    labelText: 'HEIGHT IN MTRS',
-                    hintText: 'HEIGHT IN MTRS',
+                    labelText: 'HEIGHT',
+                    hintText: 'HEIGHT',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(color: Colors.orange),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.orange)
+                      ),
+                      contentPadding: EdgeInsets.all(20)
                   ),
                 ),
               ),
@@ -666,6 +762,9 @@ class _FormUpdateState extends State<FormUpdate> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: Color.fromARGB(206, 209, 140, 36)
+                  ),
                   validator: (String value){
                     if(value.isEmpty){
                       return "cannot be empty";
@@ -674,15 +773,66 @@ class _FormUpdateState extends State<FormUpdate> {
                   },
                   controller: girthController,
                   decoration: InputDecoration(
-                    labelText: 'GIRTH IN MTRS',
-                    hintText: 'GIRTH IN MTRS',
+                    labelText: 'GIRTH',
+                    hintText: 'GIRTH',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(color: Colors.orange),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.orange)
+                      ),
+                      contentPadding: EdgeInsets.all(20)
                   ),
                 ),
               ),
 
+               Container(
+                        margin: const EdgeInsets.all(8),
+                        child: ElevatedButton(
+                          onPressed: () async {
+                                  //Navigator.of(context).pushNamedAndRemoveUntil('/admin/', (route) => false);
+                                   Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                            builder: (context) => 
+                                FormData(
+                                  treeID: widget.treeID,
+                                  Age: ageController.text,
+                                  City:cityController.text,
+                                  QRcodeid:widget.treeID,
+                                  TreeName:treeNameController.text,
+                                  Zone:zoneController.text,
+                                  common:commonUtilityController.text,
+                                  division:divisionController.text,
+                                  girth:girthController.text,
+                                  gps:gpsController.text,
+                                  height:heightController.text,
+                                  tid:widget.treeID,
+                                  land:widget.land,
+                                  lat:latController.text,
+                                  long:longController.text,
+                                  railway:railwayController.text,
+                                  road:roadController.text,
+                                  scientificName:scientificTreeNameController.text,
+                                  typeofland:widget.typeofland,
+                                  ward:wardController.text,
+                                  ),
+                        ));
+          //Navigator.of(context).pushNamedAndRemoveUntil('/admin/', (route) => false);
+                          },
+                          child: const Text('Go back', style: TextStyle(fontSize: 20)),
+                           style: ElevatedButton.styleFrom(
+                            primary: Colors.red,
+                            padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                            textStyle: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold)
+                           )
+                        )
+            ),
 
             ],
           ),
@@ -734,13 +884,13 @@ class _FormUpdateState extends State<FormUpdate> {
                                   gps:gpsController.text,
                                   height:heightController.text,
                                   tid:widget.treeID,
-                                  land:selectedValue_gvt_land,
+                                  land:widget.land,
                                   lat:latController.text,
                                   long:longController.text,
                                   railway:railwayController.text,
                                   road:roadController.text,
                                   scientificName:scientificTreeNameController.text,
-                                  typeofland:selectedValue_land_type,
+                                  typeofland:widget.typeofland,
                                   ward:wardController.text,
                                   ),
                         ));
@@ -749,6 +899,8 @@ class _FormUpdateState extends State<FormUpdate> {
         
       },
         child: const Icon(Icons.done),
+        focusColor: Colors.orange,
+        backgroundColor: Colors.orange,
       ),
     );
   }

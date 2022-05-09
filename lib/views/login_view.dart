@@ -1,6 +1,6 @@
 import 'package:arbor/utilities/dialogs/error_dialog.dart';
-import 'package:arbor/views/dropdown/expandedListAnimationWidget.dart';
-import 'package:arbor/views/dropdown/scrollbar.dart';
+import 'package:arbor/views/model.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as devtools show log;
@@ -32,11 +32,11 @@ class _LoginViewState extends State<LoginView> {
 
   // List<String> items = <String>['admin','master','public'];
   // String selectedItem = 'admin';
-  List <String> _list =["admin","master","public"];
-  bool isStrechedDropDown = false;
-  int groupValue = 0;
-  String title = 'Login as';
-
+  // List <String> _list =["admin","master","public"];
+  // bool isStrechedDropDown = false;
+  // int groupValue = 0;
+  // String title = 'Login as';
+  bool isPasswordVisible = false;
   @override
   Widget build(BuildContext context) {
 
@@ -254,7 +254,12 @@ class _LoginViewState extends State<LoginView> {
 	                            decoration: InputDecoration(
 	                              border: InputBorder.none,
 	                              hintText: "Email",
-	                              hintStyle: TextStyle(color: Colors.grey[400])
+	                              hintStyle: TextStyle(color: Colors.grey[400]),
+                                icon: Icon(
+                                  Icons.email,
+                                  color: Colors.purple,
+                                  size: 20,
+                                )
 	                            ),
 	                          ),
 	                        ),
@@ -262,13 +267,26 @@ class _LoginViewState extends State<LoginView> {
 	                          padding: EdgeInsets.all(8.0),
 	                          child: TextField(
                               controller: _password,
-                              obscureText: true,
+                              obscureText: isPasswordVisible,
                               enableSuggestions: false,
                               autocorrect: false,
 	                            decoration: InputDecoration(
+                                suffixIcon: IconButton(
+                                  color: Colors.purple,
+                                  icon: isPasswordVisible 
+                                  ? Icon(Icons.visibility_off) 
+                                  : Icon(Icons.visibility),
+                                  onPressed: () =>
+                                    setState(() => isPasswordVisible = !isPasswordVisible),
+                                ),
 	                              border: InputBorder.none,
 	                              hintText: "Password",
-	                              hintStyle: TextStyle(color: Colors.grey[400])
+	                              hintStyle: TextStyle(color: Colors.grey[400]),
+                                 icon: Icon(
+                                  Icons.password,
+                                  color: Colors.purple,
+                                  size: 20,
+                                )
 	                            ),
 	                          ),
 	                        )
@@ -276,91 +294,7 @@ class _LoginViewState extends State<LoginView> {
 	                    ),
 	                  ),
                     //DropdownButton
-                    SafeArea(
-                      child: Column(
-                        children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                  child: Container(
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Color.fromARGB(220, 220, 220, 220)),
-                                    borderRadius: BorderRadius.all(Radius.circular(27))
-                                    ),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                        // height: 45,
-                                        width: double.infinity,
-                                        padding: EdgeInsets.only(right: 10),
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Color.fromARGB(220, 220, 220, 220),),
-                                            borderRadius:BorderRadius.all(Radius.circular(25))
-                                            ),
-                                        constraints: BoxConstraints(
-                                          minHeight: 45,
-                                          minWidth: double.infinity,
-                                        ),
-                                        alignment: Alignment.center,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Expanded(
-                                              child: Padding(
-                                                padding: const EdgeInsets.symmetric(
-                                                    horizontal: 20, vertical: 10,),
-                                                child: Text(
-                                                title,
-                                                ),
-                                              ),
-                                            ),
-                                           
-                                            GestureDetector(
-                                                onTap: () {
-                                                  setState(() {
-                                                    isStrechedDropDown =
-                                                        !isStrechedDropDown;
-                                                  });
-                                                },
-                                                child: Icon(isStrechedDropDown
-                                                    ? Icons.arrow_upward
-                                                    : Icons.arrow_downward))
-                                          ],
-                                        )),
-                                    ExpandedSection(
-                                      expand: isStrechedDropDown,
-                                      height: 100,
-                                      child: MyScrollbar(
-                                        builder: (context, scrollController2) =>
-                                            ListView.builder(
-                                                padding: EdgeInsets.all(0),
-                                                controller: scrollController2,
-                                                shrinkWrap: true,
-                                                itemCount: _list.length,
-                                                itemBuilder: (context, index) {
-                                                  return RadioListTile(
-                                                    title: Text(_list.elementAt(index)),
-                                                      value: index,
-                                                      groupValue: groupValue,
-                                                      onChanged: (val) {
-                                                      setState(() {
-                                                      groupValue = val as int;
-                                                      title = _list.elementAt(index);
-                                                      });
-                                                      });
-                                                }),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              )),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
+                    
 
 
 
@@ -389,28 +323,36 @@ class _LoginViewState extends State<LoginView> {
 
                           devtools.log(userCredential.toString());
                           final user = FirebaseAuth.instance.currentUser;
+                           UserModel loggedInUser = UserModel();
                           if(user?.emailVerified ?? false){
                             //if users email is varified
-                            devtools.log(groupValue.toString());
-                            if(groupValue == 0){
-                              Navigator.of(context)
-                            .pushNamedAndRemoveUntil(
-                            '/admin/',
-                            (route) => false,);
-                            }else if(groupValue == 1){
-                              Navigator.of(context)
-                            .pushNamedAndRemoveUntil(
-                            '/admin/',
-                            (route) => false,);
-                            }else if(groupValue == 2){
-                              Navigator.of(context)
-                            .pushNamedAndRemoveUntil(
-                            '/admin/',
-                            (route) => false,);
-                            }else{
-                              devtools.log('Please select one item');
-                            }
-                            
+                             var role;
+                            FirebaseFirestore.instance
+                            .collection("users")
+                            .doc(user.uid)
+                            .get()
+                            .then((value){
+
+                              if(value.data()["role"] == 'Admin'){
+                                Navigator.of(context)
+                                .pushNamedAndRemoveUntil(
+                                '/admin/',
+                                (route) => false,);
+                              }else if(value.data()["role"] == 'Master'){
+                                Navigator.of(context)
+                                .pushNamedAndRemoveUntil(
+                                '/admin/',
+                                (route) => false,);
+                              } else if(value.data()["role"]== 'Public'){
+                                Navigator.of(context)
+                                .pushNamedAndRemoveUntil(
+                                '/public/',
+                                (route) => false,);
+                              } else{
+                                devtools.log('Please select one item');
+                              }
+                            });
+                          
                           }else{
                             //if users email is not varified
                             Navigator.of(context)

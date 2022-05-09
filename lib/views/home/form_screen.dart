@@ -110,8 +110,9 @@ class _FormScreenState extends State<FormScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Form'),
+        title: Center(child: const Text('Enter Tree Details')),
         automaticallyImplyLeading: false,
+        backgroundColor: Colors.orange,
       ),
       body:Container(
         padding: const EdgeInsets.symmetric(
@@ -123,11 +124,12 @@ class _FormScreenState extends State<FormScreen> {
           child: ListView(
             children: <Widget>[
 
-              const Center(child: Text("LOCATION")),
-
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: Color.fromARGB(206, 209, 140, 36)
+                  ),
                   validator: (String value){
                     if(value.isEmpty){
                       return "City cannot be empty";
@@ -140,9 +142,16 @@ class _FormScreenState extends State<FormScreen> {
                   decoration: InputDecoration(
                     labelText: 'City',
                     hintText: 'City',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(color: Colors.orange),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.orange)
+                      ),
+                      contentPadding: EdgeInsets.all(20)
                   ),
                 ),
               ),
@@ -150,6 +159,9 @@ class _FormScreenState extends State<FormScreen> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: Color.fromARGB(206, 209, 140, 36)
+                  ),
                   validator: (String value){
                     if(value.isEmpty){
                       return "Zone cannot be empty";
@@ -160,9 +172,16 @@ class _FormScreenState extends State<FormScreen> {
                   decoration: InputDecoration(
                     labelText: 'Zone',
                     hintText: 'Zone',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(color: Colors.orange),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.orange)
+                      ),
+                      contentPadding: EdgeInsets.all(20)
                   ),
                 ),
               ),
@@ -170,6 +189,9 @@ class _FormScreenState extends State<FormScreen> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: Color.fromARGB(206, 209, 140, 36)
+                  ),
                   validator: (String value){
                     if(value.isEmpty){
                       return "Division cannot be empty";
@@ -180,9 +202,16 @@ class _FormScreenState extends State<FormScreen> {
                   decoration: InputDecoration(
                     labelText: 'Division',
                     hintText: 'Division',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(color: Colors.orange),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.orange)
+                      ),
+                      contentPadding: EdgeInsets.all(20)
                   ),
                 ),
               ),
@@ -190,6 +219,9 @@ class _FormScreenState extends State<FormScreen> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: Color.fromARGB(206, 209, 140, 36)
+                  ),
                   validator: (String value){
                     if(value.isEmpty){
                       return "Ward cannot be empty";
@@ -200,22 +232,27 @@ class _FormScreenState extends State<FormScreen> {
                   decoration: InputDecoration(
                     labelText: 'Ward',
                     hintText: 'Ward',
+                     hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(color: Colors.orange),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.orange)
+                      ),
+                      contentPadding: EdgeInsets.all(20)
                   ),
                 ),
               ),
 
-              const Padding(
-                  padding: EdgeInsets.only(top: 15),
-                  child: Center(child: Text("GPS LOCATION")
-                  )
-                ),
 
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: Color.fromARGB(206, 209, 140, 36)
+                  ),
                   validator: (String value){
                     if(value.isEmpty){
                       return "GPS location cannot be empty";
@@ -226,22 +263,28 @@ class _FormScreenState extends State<FormScreen> {
                   decoration: InputDecoration(
                     labelText: 'GPS location',
                     hintText: 'GPS location',
+                     hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(color: Colors.orange),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.orange)
+                      ),
+                      contentPadding: EdgeInsets.all(20)
                   ),
                 ),
               ),
 
-              const Padding(
-                  padding: EdgeInsets.only(top: 15),
-                  child: Center(child: Text("Lattitude")
-                  )
-                ),
+             
 
                Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: Color.fromARGB(206, 209, 140, 36)
+                  ),
                   validator: (String value){
                     if(value.isEmpty){
                       return "lattitude cannot be empty";
@@ -252,23 +295,29 @@ class _FormScreenState extends State<FormScreen> {
                   decoration: InputDecoration(
                     labelText: 'lattitude',
                     hintText: 'lattitude',
+                     hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(color: Colors.orange),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.orange)
+                      ),
+                      contentPadding: EdgeInsets.all(20)
                   ),
                 ),
               ),
 
 
-                const Padding(
-                  padding: EdgeInsets.only(top: 15),
-                  child: Center(child: Text("Longitude")
-                  )
-                ),
+                
 
                Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: Color.fromARGB(206, 209, 140, 36)
+                  ),
                   validator: (String value){
                     if(value.isEmpty){
                       return "lonitude cannot be empty";
@@ -279,21 +328,27 @@ class _FormScreenState extends State<FormScreen> {
                   decoration: InputDecoration(
                     labelText: 'longitude',
                     hintText: 'longitude',
+                     hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(color: Colors.orange),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.orange)
+                      ),
+                      contentPadding: EdgeInsets.all(20)
                   ),
                 ),
               ),
 
-              const Padding(
-                  padding: EdgeInsets.only(top: 15),
-                  child: Center(child: Text("Common Utility")
-                  )
-                ),
+              
                Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: Color.fromARGB(206, 209, 140, 36)
+                  ),
                   validator: (String value){
                     if(value.isEmpty){
                       return "common utility cannot be empty";
@@ -304,24 +359,29 @@ class _FormScreenState extends State<FormScreen> {
                   decoration: InputDecoration(
                     labelText: 'common utility',
                     hintText: 'common utility',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(color: Colors.orange),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.orange)
+                      ),
+                      contentPadding: EdgeInsets.all(20)
                   ),
                 ),
               ),
                 
               
              
-              const Padding(
-                  padding: EdgeInsets.only(top: 15),
-                  child: Center(child: Text("ROAD")
-                  )
-                ),
 
                Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: Color.fromARGB(206, 209, 140, 36)
+                  ),
                   validator: (String value){
                     if(value.isEmpty){
                       return "road cannot be empty";
@@ -332,22 +392,27 @@ class _FormScreenState extends State<FormScreen> {
                   decoration: InputDecoration(
                     labelText: 'road',
                     hintText: 'road',
+                     hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(color: Colors.orange),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.orange)
+                      ),
+                      contentPadding: EdgeInsets.all(20)
                   ),
                 ),
               ),
 
-              const Padding(
-                  padding: EdgeInsets.only(top: 15),
-                  child: Center(child: Text("Railway")
-                  )
-                ),
-
+             
                Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: Color.fromARGB(206, 209, 140, 36)
+                  ),
                   validator: (String value){
                     if(value.isEmpty){
                       return "Railway";
@@ -358,21 +423,23 @@ class _FormScreenState extends State<FormScreen> {
                   decoration: InputDecoration(
                     labelText: 'railway',
                     hintText: 'railway',
+                     hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(color: Colors.orange),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.orange)
+                      ),
+                      contentPadding: EdgeInsets.all(20)
                   ),
                 ),
               ),
 
-                const Padding(
-                  padding: EdgeInsets.only(top: 15),
-                  child: Center(child: Text("GOVERNMENT LAND")
-                  )
-                ),
-
+               
                 Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8),
                 child: DropdownButtonHideUnderline(
                     child: DropdownButton2(
                       isExpanded: true,
@@ -392,7 +459,7 @@ class _FormScreenState extends State<FormScreen> {
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.grey,
+                                color: Colors.orange,
                               ),
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -407,7 +474,7 @@ class _FormScreenState extends State<FormScreen> {
                                   style: const TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.grey,
+                                    color: Color.fromARGB(206, 209, 140, 36),
                                   ),
                                   overflow: TextOverflow.ellipsis,
                                 ),
@@ -427,11 +494,11 @@ class _FormScreenState extends State<FormScreen> {
                       iconDisabledColor: Colors.grey,
                       buttonHeight: 50,
                       buttonWidth: 320,
-                      buttonPadding: const EdgeInsets.only(left: 14, right: 14),
+                      buttonPadding: const EdgeInsets.only(left: 14, right: 14, top: 10, bottom: 10),
                       buttonDecoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(50),
                         border: Border.all(
-                          color: Colors.black26,
+                          color: Colors.grey,
                         ),
                         color: Colors.white,
                       ),
@@ -454,11 +521,7 @@ class _FormScreenState extends State<FormScreen> {
                   ),
                 ),
 
-                const Padding(
-                  padding: EdgeInsets.only(top: 15),
-                  child: Center(child: Text("TYPE OF LAND")
-                  )
-                ),
+               
 
                 Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -481,7 +544,7 @@ class _FormScreenState extends State<FormScreen> {
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.grey,
+                                color: Colors.orange,
                               ),
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -496,7 +559,7 @@ class _FormScreenState extends State<FormScreen> {
                                   style: const TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.grey,
+                                    color: Color.fromARGB(206, 209, 140, 36),
                                   ),
                                   overflow: TextOverflow.ellipsis,
                                 ),
@@ -518,7 +581,7 @@ class _FormScreenState extends State<FormScreen> {
                       buttonWidth: 320,
                       buttonPadding: const EdgeInsets.only(left: 14, right: 14),
                       buttonDecoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(50),
                         border: Border.all(
                           color: Colors.black26,
                         ),
@@ -543,15 +606,14 @@ class _FormScreenState extends State<FormScreen> {
                   ),
                 ),
 
-                const Padding(
-                  padding: EdgeInsets.only(top: 15),
-                  child: Center(child: Text("TREES")
-                  )
-                ),
+                
 
                 Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: Color.fromARGB(206, 209, 140, 36)
+                  ),
                   validator: (String value){
                     if(value.isEmpty){
                       return "cannot be empty";
@@ -560,11 +622,18 @@ class _FormScreenState extends State<FormScreen> {
                   },
                   controller:_treeNameController,
                   decoration: InputDecoration(
-                    labelText: 'NAME OF THE TREE',
-                    hintText: 'NAME OF THE TREE',
+                    labelText: 'NAME',
+                    hintText: 'NAME',
+                     hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(color: Colors.orange),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.orange)
+                      ),
+                      contentPadding: EdgeInsets.all(20)
                   ),
                 ),
               ),
@@ -572,6 +641,9 @@ class _FormScreenState extends State<FormScreen> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: Color.fromARGB(206, 209, 140, 36)
+                  ),
                   validator: (String value){
                     if(value.isEmpty){
                       return "cannot be empty";
@@ -582,9 +654,16 @@ class _FormScreenState extends State<FormScreen> {
                   decoration: InputDecoration(
                     labelText: 'SCIENTIFIC NAME',
                     hintText: 'SCIENTIFIC NAME',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(color: Colors.orange),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.orange)
+                      ),
+                      contentPadding: EdgeInsets.all(20)
                   ),
                 ),
               ),
@@ -592,6 +671,9 @@ class _FormScreenState extends State<FormScreen> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: Color.fromARGB(206, 209, 140, 36)
+                  ),
                   validator: (String value){
                     if(value.isEmpty){
                       return "cannot be empty";
@@ -602,9 +684,16 @@ class _FormScreenState extends State<FormScreen> {
                   decoration: InputDecoration(
                     labelText: 'AGE',
                     hintText: 'AGE',
+                     hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(color: Colors.orange),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.orange)
+                      ),
+                      contentPadding: EdgeInsets.all(20)
                   ),
                 ),
               ),
@@ -613,6 +702,9 @@ class _FormScreenState extends State<FormScreen> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: Color.fromARGB(206, 209, 140, 36)
+                  ),
                   validator: (String value){
                     if(value.isEmpty){
                       return "cannot be empty";
@@ -621,11 +713,18 @@ class _FormScreenState extends State<FormScreen> {
                   },
                   controller: _heightController,
                   decoration: InputDecoration(
-                    labelText: 'HEIGHT IN MTRS',
-                    hintText: 'HEIGHT IN MTRS',
+                    labelText: 'HEIGHT',
+                    hintText: 'HEIGHT',
+                     hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(color: Colors.orange),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.orange)
+                      ),
+                      contentPadding: EdgeInsets.all(20)
                   ),
                 ),
               ),
@@ -634,6 +733,9 @@ class _FormScreenState extends State<FormScreen> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: Color.fromARGB(206, 209, 140, 36)
+                  ),
                   validator: (String value){
                     if(value.isEmpty){
                       return "cannot be empty";
@@ -642,11 +744,18 @@ class _FormScreenState extends State<FormScreen> {
                   },
                   controller: _girthController,
                   decoration: InputDecoration(
-                    labelText: 'GIRTH IN MTRS',
-                    hintText: 'GIRTH IN MTRS',
+                    labelText: 'GIRTH',
+                    hintText: 'GIRTH',
+                     hintStyle: TextStyle(color: Colors.grey),
+                    labelStyle: TextStyle(color: Colors.orange),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.orange)
+                      ),
+                      contentPadding: EdgeInsets.all(20)
                   ),
                 ),
               ),
@@ -658,7 +767,14 @@ class _FormScreenState extends State<FormScreen> {
                           onPressed: () async {
                                   Navigator.of(context).pushNamedAndRemoveUntil('/admin/', (route) => false);
                           },
-                          child: const Text('Go back', style: TextStyle(fontSize: 20))
+                          child: const Text('Go back', style: TextStyle(fontSize: 20)),
+                           style: ElevatedButton.styleFrom(
+                            primary: Colors.red,
+                            padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                            textStyle: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold)
+                           )
                         )
             ),
 
@@ -669,9 +785,6 @@ class _FormScreenState extends State<FormScreen> {
       floatingActionButton: FloatingActionButton(onPressed: ()
         {
         if(_formKey.currentState.validate()){
-          
-
-          
 
           tree_data.doc(widget.treeID).set({
             'City':_cityController.text,
@@ -729,6 +842,8 @@ class _FormScreenState extends State<FormScreen> {
         
       },
         child: const Icon(Icons.done),
+        focusColor: Colors.orange,
+        backgroundColor: Colors.orange,
       ),
       
     );
